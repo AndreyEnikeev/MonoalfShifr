@@ -1,0 +1,42 @@
+﻿<Window x:Class="ИБ_МоноЗаменаФулл.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ИБ_МоноЗаменаФулл"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="352" Width="584" WindowStyle="ToolWindow" ResizeMode="NoResize">
+    <Grid>
+        <TextBox x:Name="StartText" TextWrapping="Wrap" Text="" Margin="10,41,0,0" KeyDown="StartText_KeyDown" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <TextBox x:Name="DeShifrText" TextWrapping="Wrap" Text="" Margin="215,211,0,0" KeyDown="DeShifrText_KeyDown" HorizontalAlignment="Left" Width="200" Height="89" VerticalAlignment="Top"/>
+        <TextBox x:Name="ShifrText" TextWrapping="Wrap" Text="" Margin="10,211,0,0" KeyDown="ShifrText_KeyDown" HorizontalAlignment="Left" Width="200" Height="89" VerticalAlignment="Top"/>
+        <GroupBox Header="Cпособ шифрования" Margin="215,10,0,0" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Width="194">
+            <Grid>
+                <RadioButton x:Name="T1" GroupName="Tyep" TabIndex="0" Content="Замена на другие буквы" Margin="10,10,-6,67" Checked="T4_Checked"/>
+                <RadioButton x:Name="T2" GroupName="Tyep" TabIndex="1" Content="Замена на цифры" Margin="10,30,10,47" Checked="T4_Checked"/>
+                <RadioButton x:Name="T3" GroupName="Tyep" TabIndex="2" Content="Шифр Атбаш" Margin="10,50,10,27" Checked="T4_Checked"/>
+                <RadioButton x:Name="T4" GroupName="Tyep" TabIndex="3" Content="Гаммирование" Margin="10,70,10,7" Checked="T4_Checked"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="Coding" Content="Зашифровать" Margin="10,135,0,0" Click="Coding_Click" HorizontalAlignment="Left" Width="120" Height="40" VerticalAlignment="Top"/>
+        <Button x:Name="Decoding" Content="Расшифровать" Margin="135,135,0,0" Click="Decoding_Click" HorizontalAlignment="Left" Width="120" Height="40" VerticalAlignment="Top"/>
+        <Button x:Name="Info" Margin="260,135,0,0" Click="Info_Click" Width="149" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock>
+                Информация<LineBreak/> о шифре
+            </TextBlock>
+        </Button>
+        <Label Content="Исходный текст" Margin="10,10,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <Label Content="Зашифрованый текст" Margin="10,180,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <Label Content="Ключ для гаммирования" Margin="420,10,0,0" HorizontalAlignment="Left" Width="146" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="KeyText" TextWrapping="Wrap" Text="" Margin="420,41,0,0" IsReadOnly="True" HorizontalAlignment="Left" Width="140" Height="23" VerticalAlignment="Top"/>
+        <Label Content="Расшифрованый текст" Margin="215,180,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <GroupBox Header="Исходные данные" HorizontalAlignment="Left" Height="75" Margin="420,100,0,0" VerticalAlignment="Top" Width="140">
+            <Grid>
+                <RadioButton x:Name="Open" GroupName="S/L" Content="Открытый текст" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                <RadioButton x:Name="Close" GroupName="S/L" Content="Закрытый текст" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,30,0,0"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="SaveB"  Content="Сохранить текст" HorizontalAlignment="Left" Height="40" Margin="420,260,0,0" VerticalAlignment="Top" Width="140" Click="SaveB_Click"/>
+        <Button x:Name="LoadB" Content="Загрузить текст" HorizontalAlignment="Left" Height="40" Margin="420,211,0,0" VerticalAlignment="Top" Width="140" Click="LoadB_Click"/>
+    </Grid>
+</Window>

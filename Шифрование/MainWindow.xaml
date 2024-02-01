@@ -1,0 +1,64 @@
+﻿<Window x:Class="Шифрование.MainWindow"   
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Шифрование"
+        mc:Ignorable="d"
+        Title="Шифрование" Height="450" Width="800" Icon="/IconFile.ico">
+    <!--Создание окна и подключение библиотек(на самом деле пространства имён, но если что библиотеки говори)+ещё подключение пространства имён проекта и установка свойст окна-->
+
+    <!--Создание контейнера в котором будут распологаться обьекты-->
+    <Grid>
+        <!--Разделение контейнера на столбцы-->
+        <Grid.ColumnDefinitions>
+            <!--Установка количество столбцов и их параметров-->
+            <!--Если *, то размер устанавливаеться автоматически под размер окна
+                Если Auto, размер по обьектам внутри
+                Если число, то это фиксированое значение
+            -->
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <!--Всё аналогично столбца только со строками-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="3"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!--Создания меню, которая распологаеться сверху-->
+        <Menu Grid.Row="0" Height="20" VerticalAlignment="Top" Background="Gray" Grid.ColumnSpan="3">
+            <!--Создание обьекта внутри меню(1 кнопки проще говоря)-->
+            <MenuItem Background="Gray" Header="Зашифровать" Click="Coding_Click"/>
+            <MenuItem Background="Gray" Header="Тип шифрования">
+                <!--Добавление коллекции РБ в обьект меню(Может быть добавлен не только РБ)-->
+                <RadioButton x:Name="T1" GroupName="Tyep" TabIndex="0" Content="Замена на другие буквы" IsChecked="True"/>
+                <RadioButton x:Name="T2" GroupName="Tyep" TabIndex="1" Content="Замена на цифры"/>
+                <RadioButton x:Name="T3" GroupName="Tyep" TabIndex="2" Content="Шифр Атбаш"/>
+                <RadioButton x:Name="T4" GroupName="Tyep" TabIndex="3" Content="Гаммирование"/>
+                <RadioButton x:Name="T5" GroupName="Tyep" TabIndex="3" Content="Гаммирование(другой способ)"/>
+            </MenuItem>
+            <MenuItem Background="Gray" Header="Информация о шифрах" Click="Info_Click"></MenuItem>
+            <MenuItem Background="Gray" Header="Загрузить текст из файла" Click="Load_Click"></MenuItem>
+            <MenuItem Background="Gray" Header="Выгрузить шифр в файл" Click="Save_Click"></MenuItem>
+        </Menu>
+
+        <!--Зеленая линия. Grid.Column(Row)-Показывает в каком столбце находиться даный обьект. Grid.ColumnSpan(Row)-Указывает во сколько следующих частей он входит-->
+        <TextBlock Background="Green" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="0"/>
+        
+        <!--Надписи над полями для ввода-->
+        <TextBlock Foreground="White" Background="#FF202020" Grid.Row="1" Text="Исходный текст"  Grid.Column="0"/>
+        <TextBlock Foreground="White" Background="#FF202020" Grid.Row="1"  Text="Зашифрованный текст"  Grid.Column="2"/>
+        
+        <!--Поля для ввода текста-->
+        <TextBox x:Name="StartText" Grid.Row="3" Grid.Column="0" KeyDown="StartText_KeyDown" MaxLength="500" TextWrapping="Wrap"/>
+        <TextBox x:Name="ShifrText" Grid.Row="3" Grid.Column="2" KeyDown="ShifrText_KeyDown" MaxLength="1500" TextWrapping="Wrap"/>
+        
+        <!--Обьект с помощью которого мы меняем размер 2 колонок-->
+        <GridSplitter Grid.RowSpan="3" Grid.Row="1" Background="Gray" Grid.Column="1" ShowsPreview="False" HorizontalAlignment="Center" VerticalAlignment="Stretch"  Width="3" ResizeDirection="Columns"/>
+    </Grid>
+</Window>
